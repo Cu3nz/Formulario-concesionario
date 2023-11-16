@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validación Correcta</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .contenedor {
+            text-align: center;
+            background: white;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        .titulo-validacion {
+            color: #4caf50;
+            margin-bottom: 24px;
+        }
+        .texto {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .datos-usuario {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: inset 0 0 10px #e0e0e0;
+        }
+        .boton-cerrar {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .boton-si {
+            background-color: #4caf50;
+        }
+        .boton-no {
+            background-color: #f44336;
+        }
+        .boton-cerrar:hover {
+            filter: brightness(90%);
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1 class="titulo-validacion">Validación Exitosa</h1>
+        <p class="texto">
+            Los datos se han validado correctamente. Acepta para almacenar en el <B>Vector</B>.
+        </p>
+        <div class="datos-usuario" id="mostrar_nombre">Nombre: John Doe</div>
+        <div class="datos-usuario" id="mostrar_apellidos">Apellidos: Smith</div>
+        <div class="datos-usuario" id="mostrar_dni">DNI: 12345678A</div>
+        <div class="datos-usuario" id="mostrar_nombreCoche">Nombre de coche: Maclaren</div>
+        <div class="datos-usuario" id="mostrar_matriculaCoche">Matricula: 3775NNC</div>
+        <div class="datos-usuario" id="mostrar_email">Email: john@example.com</div>
+        <div class="datos-usuario" id="mostrar_fecha">Fecha de Nacimiento: 01/01/1990</div>
+        <div class="datos-usuario" id="mostrar_tipoCoche">Asignatura: Matemáticas</div>
+        <div class="datos-usuario" id="mostrar_marcaCoche">Asignatura: Matemáticas</div>
+        <p>¿Estás seguro de que los datos son correctos?</p>
+        <button onclick="confirmarDatos()" class="boton-cerrar boton-si">Sí</button>
+        <button class="boton-cerrar boton-no" onclick="window.close()">No</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //  ------------------------- Mostrar lo que almacenan los inputs del formulario.html -------------------------
+            var datos = opener.mostrarDatosValidacionCorrecta(); // función que está en el script del formulario_colores.js
+             
+            document.getElementById("mostrar_nombre").textContent = "Nombre: " + datos.nombre; // datos.nombre viene de la funcion devolver nombre: document.getElementById("nombreInput").value, Basicamente es una categoria para saber lo que tiene que devolver en cada parrafo
+            document.getElementById("mostrar_apellidos").textContent = "Apellidos: " + datos.apellidos; // datos.apellidos viene de la funcion devolver,  apellidos: document.getElementById("apellidosInput").value,
+            document.getElementById("mostrar_dni").textContent = "DNI: " + datos.dni; //datos.dni viene de la funcion devolver, direccion: document.getElementById("direccionInput").value,
+            document.getElementById("mostrar_nombreCoche").textContent = "Nombre de coche: " + datos.nombre_coche; //datos.dni viene de la funcion devolver, direccion: document.getElementById("direccionInput").value,
+            document.getElementById("mostrar_matriculaCoche").textContent = "Matricula " + datos.matricula; //datos.dni viene de la funcion devolver, direccion: document.getElementById("direccionInput").value,
+            document.getElementById("mostrar_email").textContent = "Email: " + datos.email;// datos.edad viene de la funcion devolver email: document.getElementById("email_id").value*/
+            document.getElementById("mostrar_fecha").textContent = "Fecha de nacimiento: " + datos.fechaNacimiento;// datos.edad viene de la funcion devolver email: document.getElementById("email_id").value*/
+            document.getElementById("mostrar_tipoCoche").textContent = "Tipo de coche:" + datos.tipo_coche;// datos.edad viene de la funcion devolver email: document.getElementById("email_id").value*/
+            document.getElementById("mostrar_marcaCoche").textContent = "Marca de coche:" + datos.marca_coche;// datos.edad viene de la funcion devolver email: document.getElementById("email_id").value*/
+            
+            //  -------------------------  Fin Mostrar lo que almacenan los inputs del formulario.html -------------------------
+        });
+
+         //todo Pasamos lo que tenemos en el input al metodo añadirAlumnoArray que esta en el js
+      function confirmarDatos() {
+        var datos = {
+    nombre: document.getElementById("mostrar_nombre").textContent.replace('Nombre: ', '').trim(),
+    apellidos: document.getElementById("mostrar_apellidos").textContent.replace('Apellidos: ', '').trim(),
+    dni: document.getElementById("mostrar_dni").textContent.replace('DNI: ', '').trim(),
+    nombre_coche: document.getElementById("mostrar_nombreCoche").textContent.replace('Nombre de coche: ', '').trim(),
+    matricula: document.getElementById("mostrar_matriculaCoche").textContent.replace('Matricula', '').trim(),
+    email: document.getElementById("mostrar_email").textContent.replace('Email: ', '').trim(),
+    fechaNacimiento: document.getElementById("mostrar_fecha").textContent.replace('Fecha de nacimiento: ', '').trim(),
+    tipo_coche:document.getElementById("mostrar_tipoCoche").textContent.replace('Tipo de coche:', '').trim(),
+    marca_coche:document.getElementById("mostrar_marcaCoche").textContent.replace('Marca de coche:', '').trim(),
+};
+
+// Llama a la función para agregar el estudiante con los datos confirmados
+opener.añadirDatosArrayFormulario(datos); // Cambia "añadirEstudiante" al nombre de tu función correspondiente
+window.close();
+}
+
+
+
+    </script>
+</body>
+</html>
